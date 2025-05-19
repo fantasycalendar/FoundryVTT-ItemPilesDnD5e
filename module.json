@@ -1,0 +1,40 @@
+{
+  "id": "itempilesdnd5e",
+  "title": "Item Piles: D&D 5e",
+  "description": "This module adds support for the D&D5e system within the Item Piles module",
+  "version": "1.0.0",
+  "library": "false",
+  "compatibility": {
+    "minimum": "12",
+    "verified": "13",
+    "maximum": "13"
+  },
+  "authors": [
+    {
+      "name": "Wasp",
+      "url": "https://github.com/Haxxer",
+      "discord": "Wasp#2005"
+    }
+  ],
+  "esmodules": [
+    "dist/module.js"
+  ],
+  "relationships": {
+    "requires": [
+      {
+        "id": "item-piles",
+        "type": "module",
+        "manifest": "https://github.com/fantasycalendar/FoundryVTT-ItemPiles/releases/latest/download/manifest.json",
+        "compatibility": {
+          "minimum": "3.2.8",
+          "verified": "3.2.8"
+        }
+      }
+    ]
+  },
+  "url": "https://github.com/fantasycalendar/FoundryVTT-ItemPiles-DND5e",
+  "manifest": "https://github.com/fantasycalendar/FoundryVTT-ItemPiles-DND5e/releases/latest/download/manifest.json",
+  "download": "https://github.com/fantasycalendar/FoundryVTT-ItemPiles-DND5e/releases/latest/download/module.zip",
+  "readme": "https://github.com/fantasycalendar/FoundryVTT-ItemPiles-DND5e/blob/master/README.md",
+  "bugs": "https://github.com/fantasycalendar/FoundryVTT-ItemPiles-DND5e/issues"
+}
