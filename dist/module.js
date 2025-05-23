@@ -1101,7 +1101,7 @@ Hooks.once("item-piles-ready", async () => {
 
 	}
 
-	for (const [version, data] of VERSIONS) {
+	for (const [version, data] of Object.entries(VERSIONS)) {
 		await game.itempiles.API.addSystemIntegration(data, version);
 	}
 
