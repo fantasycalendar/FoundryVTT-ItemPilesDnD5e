@@ -249,6 +249,21 @@ Hooks.once("item-piles-ready", async () => {
 			}
 		},
 
+		"ITEM_COST_TRANSFORMER": (item, currencies) => {
+			const overallCost = Number(foundry.utils.getProperty(item, "system.price.value")) ?? 0;
+			const priceDenomination = foundry.utils.getProperty(item, "system.price.denomination");
+			if (priceDenomination) {
+				const currencyDenomination = currencies
+					.filter(currency => currency.type === "attribute")
+					.find(currency => {
+						return currency.data.path.toLowerCase().endsWith(priceDenomination);
+					});
+				if (currencyDenomination) {
+					return overallCost * currencyDenomination.exchangeRate;
+				}
+			}
+			return overallCost ?? 0;
+		},
 	}
 
 	const VERSIONS = {
