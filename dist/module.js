@@ -232,7 +232,7 @@ Hooks.once("item-piles-ready", async () => {
 			"GLOBAL": {
 				[game.itempiles.CONSTANTS.ITEM_TYPE_METHODS.IS_CONTAINED]: ({ item }) => {
 					const itemData = item instanceof Item ? item.toObject() : item;
-					return !!itemData?.system?.container;
+					return itemData?.system?.container;
 				},
 				[game.itempiles.CONSTANTS.ITEM_TYPE_METHODS.IS_CONTAINED_PATH]: "system.container"
 			},
