@@ -50,6 +50,11 @@ Hooks.once("item-piles-ready", async () => {
 				formatting: "{#}",
 				buying: true,
 				selling: true,
+                condition: {
+                    path: "system.identified",
+                    value: false,
+                    placeholder: "DND5E.Unknown"
+                },
 				mapping: {
 					"common": "DND5E.ItemRarityCommon",
 					"uncommon": "DND5E.ItemRarityUncommon",
