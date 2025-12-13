@@ -340,7 +340,37 @@ Hooks.once("item-piles-ready", async () => {
 				}
 				return itemData;
 			},
-		}
+		},
+        "5.0.0": {
+            ...baseConfig,
+            "VERSION": "1.0.10",
+
+            "ITEM_TYPE_HANDLERS": {
+                "GLOBAL": {
+                    [game.itempiles.CONSTANTS.ITEM_TYPE_METHODS.IS_CONTAINED]: ({ item }) => {
+                        const itemData = item instanceof Item ? item.toObject() : item;
+                        return itemData?.system?.container;
+                    },
+                    [game.itempiles.CONSTANTS.ITEM_TYPE_METHODS.IS_CONTAINED_PATH]: "system.container"
+                },
+                "container": {
+                    [game.itempiles.CONSTANTS.ITEM_TYPE_METHODS.HAS_CURRENCY]: true,
+                    [game.itempiles.CONSTANTS.ITEM_TYPE_METHODS.CONTENTS]: ({ item }) => {
+                        if(!item.parent) return [];
+                        return item.parent.items.filter(i => i.system.container === item.id);
+                    },
+                    [game.itempiles.CONSTANTS.ITEM_TYPE_METHODS.TRANSFER]: ({ item, items, raw = false } = {}) => {
+                        if(!item.parent) return items;
+                        return [
+                            ...items,
+                            ...item.parent.items
+                                .filter(i => i.system.container === item.id)
+                                .map(i => raw ? i : i.toObject())
+                        ]
+                    }
+                }
+            },
+        }
 	}
 
 	for (const [version, data] of Object.entries(VERSIONS)) {
