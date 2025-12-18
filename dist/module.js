@@ -344,6 +344,18 @@ Hooks.once("item-piles-ready", async () => {
         "5.0.0": {
             ...baseConfig,
             "VERSION": "1.0.10",
+            "ITEM_SIMILARITIES": ["name", "type", "system.container"],
+            "UNSTACKABLE_ITEM_TYPES": ["container"],
+            "ITEM_FILTERS": [
+                {
+                    "path": "type",
+                    "filters": "background,class,facility,feat,race,spell,subclass"
+                },
+                {
+                    "path": "system.type.value",
+                    "filters": "natural"
+                }
+            ],
 
             "ITEM_TYPE_HANDLERS": {
                 "GLOBAL": {
